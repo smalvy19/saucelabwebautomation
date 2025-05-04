@@ -43,6 +43,8 @@ public class BaseTest {
                     if (isCI) {
                         // Run in headless mode if in CI environment
                         firefoxOptions.addArguments("--headless");
+                        firefoxOptions.addArguments("--disable-gpu");
+                        firefoxOptions.addArguments("--window-size=1920x1080");
                     }
                     driver = new FirefoxDriver();
                     break;
