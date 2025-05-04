@@ -29,10 +29,25 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-m2
 
-      # Install dependencies for running Chrome headless
+      # Install dependencies for headless Chrome
       - name: Install dependencies for headless Chrome
         run: |
-          sudo apt-get install -y libgtk2.0-0 libgconf-2-4 libxi6
+          sudo apt-get update
+          sudo apt-get install -y \
+            libxss1 \
+            libappindicator3-1 \
+            libasound2 \
+            libatk-bridge2.0-0 \
+            libatk1.0-0 \
+            libcups2 \
+            libgdk-pixbuf2.0-0 \
+            libnspr4 \
+            libnss3 \
+            libxcomposite1 \
+            libxrandr2 \
+            libgbm1 \
+            xdg-utils \
+            wget
 
       - name: Run Maven tests
         run: mvn clean test
