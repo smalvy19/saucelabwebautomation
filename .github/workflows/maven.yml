@@ -28,8 +28,6 @@ jobs:
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-m2
-
-      # Install dependencies for headless Chrome
       - name: Install dependencies for headless Chrome
         run: |
           sudo apt-get update
@@ -47,7 +45,9 @@ jobs:
             libxrandr2 \
             libgbm1 \
             xdg-utils \
-            wget
+            wget || true
+          sudo apt-get install -y libasound2
+
 
       - name: Run Maven tests
         run: mvn clean test
