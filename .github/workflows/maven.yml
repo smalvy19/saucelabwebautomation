@@ -85,7 +85,7 @@ jobs:
 
 
       - name: Run Maven tests
-        run: mvn clean test
+        run: mvn clean test -Dsurefire.suiteXmlFiles=testng.xml
      
       - name: Install Allure CLI
         run: |
