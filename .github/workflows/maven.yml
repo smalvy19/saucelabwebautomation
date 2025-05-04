@@ -63,19 +63,21 @@ jobs:
             libxrandr2 \
             libgbm1 \
             xdg-utils \
-            wget \
-            firefox-esr
+            wget 
 
-      - name: Install Firefox and Geckodriver
+      - name: Install Firefox (latest stable version)
         run: |
-          sudo apt-get install -y firefox
+          # Download and install the latest stable Firefox version
+          wget -q --show-progress --https-only --timestamping \
+            https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US
+          tar xjf firefox-*.tar.bz2
+          sudo mv firefox /opt/firefox
+          sudo ln -sf /opt/firefox/firefox /usr/local/bin/firefox
 
-          FIREFOX_VERSION=$(firefox --version | cut -d " " -f 3)
-          echo "Detected Firefox version: $FIREFOX_VERSION"
-
+      - name: Install Geckodriver
+        run: |
+          # Download the latest version of Geckodriver from GitHub
           GECKODRIVER_VERSION=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r '.tag_name')
-          echo "Detected Geckodriver version: $GECKODRIVER_VERSION"
-          
           wget https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz
           tar -xvzf geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz
           sudo mv geckodriver /usr/local/bin/
