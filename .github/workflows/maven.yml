@@ -44,8 +44,8 @@ jobs:
             libxrandr2 \
             libgbm1 \
             xdg-utils \
-            wget || true
-          sudo apt-get install -y libasound2
+            wget
+          
 
 
       - name: Run Maven tests
