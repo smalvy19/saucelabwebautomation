@@ -64,17 +64,21 @@ jobs:
             libgbm1 \
             xdg-utils \
             wget \
-            firefox
+            firefox-esr
 
       - name: Install Firefox and Geckodriver
         run: |
           sudo apt-get install -y firefox
+
           FIREFOX_VERSION=$(firefox --version | cut -d " " -f 3)
-          GECKODRIVER_VERSION="v0.30.0"  # Update if necessary
+          echo "Detected Firefox version: $FIREFOX_VERSION"
+
+          GECKODRIVER_VERSION=$(curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest | jq -r '.tag_name')
+          echo "Detected Geckodriver version: $GECKODRIVER_VERSION"
+          
           wget https://github.com/mozilla/geckodriver/releases/download/${GECKODRIVER_VERSION}/geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz
           tar -xvzf geckodriver-${GECKODRIVER_VERSION}-linux64.tar.gz
           sudo mv geckodriver /usr/local/bin/
-
 
 
       - name: Run Maven tests
