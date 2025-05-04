@@ -45,8 +45,11 @@ public class BaseTest {
                         firefoxOptions.addArguments("--headless");
                         firefoxOptions.addArguments("--disable-gpu");
                         firefoxOptions.addArguments("--window-size=1920x1080");
+                        firefoxOptions.addArguments("--no-sandbox");
                     }
-                    driver = new FirefoxDriver();
+                    //driver = new FirefoxDriver();
+                    System.setProperty("webdriver.gecko.driver", "/usr/local/bin/geckodriver"); // 👈 Explicit path
+                    driver = new FirefoxDriver(firefoxOptions);
                     break;
 
                 case "safari":
