@@ -67,10 +67,11 @@ jobs:
 
       - name: Install Firefox (latest stable version)
         run: |
-          # Download and install the latest stable Firefox version
           FIREFOX_URL="https://download.mozilla.org/?product=firefox-latest&os=linux64&lang=en-US"
-          wget -q --show-progress --https-only --timestamping "${FIREFOX_URL}" -O firefox-latest.tar.bz2
-          tar xjf firefox-latest.tar.bz2
+          wget -q --show-progress --https-only --timestamping "${FIREFOX_URL}" -O firefox-latest.tar
+          
+          tar xf firefox-latest.tar
+          
           sudo mv firefox /opt/firefox
           sudo ln -sf /opt/firefox/firefox /usr/local/bin/firefox
 
