@@ -3,7 +3,9 @@ package tests;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.*;
 import utils.ConfigReader;
@@ -20,15 +22,28 @@ public class BaseTest {
 
         if (driver == null) {
             String browser = ConfigReader.get("browser").toLowerCase();
+            boolean isCI = System.getenv("CI") != null; // Check if in CI environment
 
             switch (browser) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    if (isCI) {
+                        // Run in headless mode if in CI environment
+                        chromeOptions.addArguments("--headless");
+                        chromeOptions.addArguments("--disable-gpu");
+                        chromeOptions.addArguments("--window-size=1920x1080");
+                    }
                     driver = new ChromeDriver();
                     break;
 
                 case "firefox":
                     WebDriverManager.firefoxdriver().clearDriverCache().setup();
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    if (isCI) {
+                        // Run in headless mode if in CI environment
+                        firefoxOptions.addArguments("--headless");
+                    }
                     driver = new FirefoxDriver();
                     break;
 
