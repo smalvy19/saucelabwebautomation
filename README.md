@@ -45,7 +45,7 @@ This is a Java-based Selenium web automation framework using **TestNG** for test
       mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testng.xml
 ## 3. Install Allure CLI
       brew install allure
-$$ 4. Generate and Serve Report
+## 4. Generate and Serve Report
       allure generate allure-results --clean -o allure-report
       allure serve allure-results
 
@@ -62,8 +62,8 @@ allure-results: Raw test data files
 
 allure-report: Generated HTML report
 
-Download the artifacts from GitHub → unzip → run locally with:
-allure open allure-report
+## Download the artifacts from GitHub → unzip → run locally with:
+            allure serve allure-results
 
 
 
