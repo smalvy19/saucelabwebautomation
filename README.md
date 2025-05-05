@@ -63,7 +63,7 @@ allure-results: Raw test data files
 allure-report: Generated HTML report
 
 ## Download the artifacts from GitHub → unzip → run locally with:
-            allure serve allure-results
+    allure serve allure-results
 
 
 
