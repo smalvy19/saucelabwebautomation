@@ -6,17 +6,19 @@ This is a Java-based Selenium web automation framework using **TestNG** for test
 
 ├── src
 │ ├── main
-│   └── java
-│    └── pages # Locators and Method Implementations
-│    └── utils # Custom Methods
-│   └── resources # log
-│ ├── test
-│   └── java
-│     └── tests # Test classes
-│     └── utils # Config Reader and Listeners
-|   └── resources 
-│     └── testng.xml # TestNG suite configuration
-|     └── config.properties # Stored Data
+│ │ └── java
+│ │ ├── pages # Locators and Method Implementations
+│ │ └── utils # Custom Methods
+│ └── resources # Logs
+│
+├── test
+│ ├── java
+│ │ ├── tests # Test classes
+│ │ └── utils # Config Reader and Listeners
+│ └── resources
+│ ├── testng.xml # TestNG suite configuration
+│ └── config.properties # Stored Data
+│
 ├── pom.xml
 ├── .github
 │ └── workflows
