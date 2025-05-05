@@ -4,25 +4,26 @@ This is a Java-based Selenium web automation framework using **TestNG** for test
 
 ## 📂 Project Structure
 
-├── src
-│ ├── main
-│ │ └── java
-│ │ ├── pages # Locators and Method Implementations
-│ │ └── utils # Custom Methods
-│ └── resources # Logs
-│
-├── test
-│ ├── java
-│ │ ├── tests # Test classes
-│ │ └── utils # Config Reader and Listeners
-│ └── resources
-│ ├── testng.xml # TestNG suite configuration
-│ └── config.properties # Stored Data
-│
-├── pom.xml
-├── .github
-│ └── workflows
-│ └── main.yml # GitHub Actions workflow
+```
+📂 Project Root  
+├── src  
+│   ├── main  
+│   │   ├── java  
+│   │   │   ├── pages         # Locators and Method Implementations  
+│   │   │   └── utils         # Custom Methods  
+│   │   └── resources         # Logs  
+│   └── test  
+│       ├── java  
+│       │   ├── tests         # Test Classes  
+│       │   └── utils         # Config Reader and Listeners  
+│       └── resources  
+│           ├── testng.xml   # TestNG Suite Configuration  
+│           └── config.properties # Stored Test Data  
+├── pom.xml  
+├── .github  
+│   └── workflows  
+│       └── maven.yml         # GitHub Actions Workflow  
+```
 
 ## ⚙️ Features
 
